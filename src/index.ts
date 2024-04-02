@@ -1,7 +1,7 @@
 import cookieParser from "cookie-parser";
 import express, { Request, Response, NextFunction } from "express";
 import path from "path";
-import router from "./routes";
+import router from "./routes/index";
 import logger from "morgan";
 import { AppDataSource } from "./config/typeorm";
 
