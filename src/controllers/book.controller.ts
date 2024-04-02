@@ -1,16 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { AppDataSource } from "../config/typeorm";
-import { Author } from "../entities/author.entity";
-import { Book } from "../entities/book.entity";
-import { BookInstance } from "../entities/book_instance.entity";
-import { Genre } from "../entities/genre.entity";
-import { BookInstanceStatus } from "../common/constants";
+import * as BookService from "../services/book.service";
 import asyncHandler from "express-async-handler";
-
-const bookRepository = AppDataSource.getRepository(Book);
-const authorRepository = AppDataSource.getRepository(Author);
-const genreRepository = AppDataSource.getRepository(Genre);
-const bookInstanceRepository = AppDataSource.getRepository(BookInstance);
 
 //Display general information for home page
 export const index = asyncHandler(
@@ -21,15 +11,7 @@ export const index = asyncHandler(
       availableBookInstances,
       numAuthors,
       numGenres,
-    ] = await Promise.all([
-      bookRepository.count(),
-      bookInstanceRepository.count(),
-      bookInstanceRepository.findAndCount({
-        where: { status: BookInstanceStatus.AVAILABLE },
-      }),
-      authorRepository.count(),
-      genreRepository.count(),
-    ]);
+    ] = await BookService.getGeneralInfo();
     res.render("index", {
       title: "Sun Asterisk",
       book_count: numBooks,
@@ -44,7 +26,8 @@ export const index = asyncHandler(
 // Display list of all books.
 export const getBooks = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    res.send("NOT IMPLEMENTED: Get list of books");
+    const books = await BookService.getBooks();
+    res.render("books/index", { books });
   }
 );
 

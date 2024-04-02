@@ -8,7 +8,7 @@ html(lang='en')
     link(rel="stylesheet", href="/stylesheets/style.css")
     script(src="/scripts/bootstrap.min.js")
   body
-    div(class='container-fluid')
+    div.container-fluid.d-flex.flex-row.container
       block sidebar
         ul(class='sidebar-nav' )
           li
@@ -18,9 +18,9 @@ html(lang='en')
           li
             a(href='/authors' ) #{t('sidebar.author')}
           li
-            a(href='/authors' ) #{t('sidebar.genre')}
+            a(href='/genres' ) #{t('sidebar.genre')}
           li
-            a(href='/authors' ) #{t('sidebar.bookinstance')}
+            a(href='/book-instances' ) #{t('sidebar.bookinstance')}
           hr
           li
             a(href='/authors/create' ) #{t('sidebar.author_create')}
@@ -30,7 +30,7 @@ html(lang='en')
             a(href='/books/create' ) #{t('sidebar.book_create')}
           li
             a(href='/book-instances/create' ) #{t('sidebar.bookinstance_create')}
-          li
+          li(class='translator')
             a(href='?locale=en') #{t('sidebar.english')} |
             a(href='?locale=vi') #{t('sidebar.vietnamese')}
       block content

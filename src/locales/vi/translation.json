@@ -21,5 +21,18 @@
     "bookinstance_create": "Tạo mới bản sao sách",
     "english": "Tiếng Anh",
     "vietnamese": "Tiếng Việt"
+  },
+  "title": {
+    "library": "Sun Asterisk",
+    "books": "Danh sách các quyển sách có trong thư viện",
+    "authors": "Danh sách các tác giả có trong thư viện",
+    "genres": "Danh sách các thể loại có trong thư viện",
+    "bookinstances": "Danh sách các bản sao sách có trong thư viện"
+  },
+  "empty": {
+    "books": "Thư viện chưa có quyển sách nào",
+    "authors": "Thư viện chưa có tác giả nào",
+    "genres": "Thư viện chưa có thể loại nào",
+    "bookinstances": "Thư viện chưa có bản sao sách nào"
   }
 }

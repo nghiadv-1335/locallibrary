@@ -3,3 +3,19 @@
   padding: 0;
   list-style: none;
 }
+
+ul li {
+  margin-bottom: 5px;
+}
+
+.translator {
+  margin-top: 25px;
+}
+
+.container {
+  padding-top: 40px;
+}
+
+.content {
+  padding-left: 40px;
+}

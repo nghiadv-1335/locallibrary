@@ -1,4 +1,5 @@
 **/node_modules
 dist/
 .env
-locales/**/*.missing.*
+src/locales/**/*.missing.*
+src/common/fake_data.ts

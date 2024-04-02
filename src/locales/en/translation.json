@@ -21,5 +21,18 @@
     "bookinstance_create": "Create book instance",
     "english": "English",
     "vietnamese": "Vietnamese"
+  },
+  "title": {
+    "library": "Sun Asterisk",
+    "books": "Book List",
+    "authors": "Author List",
+    "genres": "Genre List",
+    "bookinstances": "Book Instance List"
+  },
+  "empty": {
+    "books": "There are no books",
+    "authors": "There are no authors",
+    "genres": "There are no genres",
+    "bookinstances": "There are no book instances" 
   }
 }

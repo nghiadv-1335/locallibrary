@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('title.authors')}
+    if authors.length
+      ul
+        each author in authors
+          li
+            a(href=author.url()) #{author.name()}
+            |  (#{new Date(author.day_of_birth)} - #{new Date(author.day_of_death)})
+    else
+      span #{t('empty.authors')}

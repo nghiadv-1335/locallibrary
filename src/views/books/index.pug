@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('title.books')}
+    if books.length
+      ul
+        each book in books
+          li
+            a(href=book.url()) #{book.title}
+            |  (#{book.author.name()})
+    else
+      span #{t('empty.books')}

@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('title.genres')}
+    if genres.length
+      ul
+        each genre in genres
+          li
+            a(href=genre.url()) #{genre.name}
+    else
+      span #{t('empty.genres')}
