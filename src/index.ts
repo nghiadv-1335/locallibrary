@@ -3,6 +3,8 @@ import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import router from "./routes/index";
 import logger from "morgan";
+import session from 'express-session';
+import flash from 'connect-flash';
 import i18next from 'i18next';
 import i18nextBackend from 'i18next-fs-backend';
 import i18nextMiddleware from 'i18next-http-middleware';
@@ -38,6 +40,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
+
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: 'locallibrary',
+    cookie: { maxAge: 60000 },
+  })
+);
+app.use(flash());
 
 app.use(express.static(path.join(__dirname, "public")));
 

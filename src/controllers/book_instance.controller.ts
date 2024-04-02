@@ -10,6 +10,7 @@ export const getBookInstances = asyncHandler(
     res.render("book_instances/index", {
       book_instances: bookInstances,
       book_instance_status: BookInstanceStatus,
+      messages: req.flash()
     });
   }
 );
@@ -31,7 +32,20 @@ export const createBookInstance = asyncHandler(
 // Display detail page for a specific book instance.
 export const getBookInstanceDetails = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    res.send(`NOT IMPLEMENTED: Book instance detail: ${req.params.id}`);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      req.flash("error", req.t('bookinstance.invalid'));
+      return res.redirect("/book-instances");
+    }
+    const book_instance = await BookInstanceService.getBookInstanceDetails(id);
+    if (book_instance === null) {
+      req.flash("error", req.t('bookinstance.not_found'));
+      return res.redirect("/book-instances");
+    }
+    res.render("book_instances/details", {
+      book_instance,
+      book_instance_status: BookInstanceStatus,
+    });
   }
 );
 

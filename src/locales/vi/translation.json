@@ -34,5 +34,35 @@
     "authors": "Thư viện chưa có tác giả nào",
     "genres": "Thư viện chưa có thể loại nào",
     "bookinstances": "Thư viện chưa có bản sao sách nào"
+  },
+  "book": {
+    "title": "Tiêu đề",
+    "summary": "Tóm tắt",
+    "isbn": "ISBN",
+    "copies": "Bản sao",
+    "no_copies": "Cuốn sách này hiện chưa có bản sao nào",
+    "invalid": "Mã sách không hợp lệ",
+    "not_found": "Không tìm thấy sách"
+  },
+  "bookinstance": {
+    "lost": "Thất lạc",
+    "loaned": "Đang mượn",
+    "available": "Có sẵn",
+    "id": "Mã sách",
+    "imprint": "Ấn bản",
+    "due_back": "Hạn cuối",
+    "status": "Trạng thái",
+    "invalid": "Mã bản sao không hợp lệ",
+    "not_found": "Không tìm thấy bản sao"
+  },
+  "author": {
+    "no_books": "Tác giả chưa có cuốn sách nào",
+    "invalid": "Mã tác giả không hợp lệ",
+    "not_found": "Không tìm thấy tác giả"
+  },
+  "genre": {
+    "no_books": "Không có sách thể loại này",
+    "invalid": "Mã thể loại không hợp lệ",
+    "not_found": "Không tìm thấy thể loại"
   }
 }

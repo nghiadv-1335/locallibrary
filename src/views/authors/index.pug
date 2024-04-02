@@ -11,3 +11,5 @@ block content
             |  (#{new Date(author.day_of_birth)} - #{new Date(author.day_of_death)})
     else
       span #{t('empty.authors')}
+    if messages.error
+      p.text-danger #{messages.error}

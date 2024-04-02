@@ -2,6 +2,7 @@
   margin-top: 20px;
   padding: 0;
   list-style: none;
+  min-width: 160px;
 }
 
 ul li {
@@ -18,4 +19,16 @@ ul li {
 
 .content {
   padding-left: 40px;
+}
+
+.child-content {
+  padding-left: 20px;
+}
+
+.child-title {
+  margin: 20px 0 20px 0
+}
+
+a {
+  text-decoration: none;
 }

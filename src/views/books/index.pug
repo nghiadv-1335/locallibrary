@@ -11,3 +11,5 @@ block content
             |  (#{book.author.name()})
     else
       span #{t('empty.books')}
+    if messages.error
+      p.text-danger #{messages.error}

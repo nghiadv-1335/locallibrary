@@ -7,17 +7,19 @@ block content
       ul
         each book_instance in book_instances
           li
-            a(href=book_instance.url)  #{book_instance.book.title} : #{book_instance.imprint}
+            a(href=book_instance.url())  #{book_instance.book.title} : #{book_instance.imprint}
             |  - 
             if book_instance.status === book_instance_status.AVAILABLE
-              span.text-success Available
+              span.text-success #{t('bookinstance.available')}
             else if book_instance.status === book_instance_status.ONLOAN
-              span.text-danger Loaned
+              span.text-warning #{t('bookinstance.loaned')}
             else if book_instance.status === book_instance_status.LOST
-              span.text-warning Lost
+              span.text-danger #{t('bookinstance.lost')}
             else
               span #{book_instance.status}
             if book_instance.status != book_instance_status.AVAILABLE
               span  (Due: #{new Date(book_instance.due_back)} )
     else
       span #{t('empty.bookinstances')}
+    if messages.error
+      p.text-danger #{messages.error}

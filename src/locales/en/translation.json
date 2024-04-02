@@ -34,5 +34,35 @@
     "authors": "There are no authors",
     "genres": "There are no genres",
     "bookinstances": "There are no book instances" 
+  },
+  "book": {
+    "title": "Title",
+    "summary": "Summary",
+    "isbn": "ISBN",
+    "copies": "Copies",
+    "no_copies": "There are no copies of this book in the library",
+    "invalid": "Invalid book ID",
+    "not_found": "Book not found"
+  },
+  "bookinstance": {
+    "lost": "Lost",
+    "loaned": "Loaned",
+    "available": "Available",
+    "id": "ID",
+    "imprint": "Imprint",
+    "due_back": "Due back",
+    "status": "Status",
+    "invalid": "Invalid book instance ID",
+    "not_found": "Book instance not found"
+  },
+  "author": {
+    "no_books": "This author has no books",
+    "invalid": "Invalid author ID",
+    "not_found": "Author not found"
+  },
+  "genre": {
+    "no_books": "This genre has no books",
+    "invalid": "Invalid genre ID",
+    "not_found": "Genre not found"
   }
 }

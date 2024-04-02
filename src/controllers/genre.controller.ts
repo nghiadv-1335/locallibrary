@@ -6,7 +6,7 @@ import asyncHandler from "express-async-handler";
 export const getGenres = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const genres = await GenreService.getGenres();
-    res.render("genres/index", { genres });
+    res.render("genres/index", { genres, messages: req.flash() });
   }
 );
 
@@ -27,7 +27,17 @@ export const createGenre = asyncHandler(
 // Display detail page for a specific genre.
 export const getGenreDetails = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    res.send(`NOT IMPLEMENTED: Genre detail: ${req.params.id}`);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      req.flash("error", req.t('genre.invalid'));
+      return res.redirect("/genres");
+    }
+    const genre = await GenreService.getGenreDetails(id);
+    if (genre === null) {
+      req.flash("error", req.t('genre.not_found'));
+      return res.redirect("/genres");
+    }
+    res.render("genres/details", { genre });
   }
 );
 

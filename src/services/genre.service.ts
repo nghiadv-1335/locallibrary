@@ -8,3 +8,10 @@ export async function getGenres(): Promise<Genre[]> {
     order: { name: "ASC" },
   });
 }
+
+export async function getGenreDetails(id: number): Promise<Genre | null> {
+  return await genreRepository.findOne({
+    relations: ["books"],
+    where: { id: id },
+  });
+}

@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('bookinstance.id')}: #{book_instance.id}
+    p #[strong #{t('book.title')}: ]
+      a(href=book_instance.book.url()) #{book_instance.book.title}
+    p #[strong #{t('bookinstance.imprint')}: ] #{book_instance.imprint}
+    p #[strong #{t('bookinstance.status')}: ]
+      if book_instance.status == book_instance_status.AVAILABLE
+        span.text-success #{t('bookinstance.available')}
+      else if book_instance.status == book_instance_status.LOST
+        span.text-danger #{t('bookinstance.lost')}
+      else
+        span.text-warning #{t('bookinstance.loaned')}
+    if book_instance.status != book_instance_status.AVAILABLE
+      p #[strong #{t('bookinstance.due_back')}:] #{book_instance.due_back}

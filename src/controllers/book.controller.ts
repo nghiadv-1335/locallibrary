@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import * as BookService from "../services/book.service";
 import asyncHandler from "express-async-handler";
+import { BookInstanceStatus } from "../common/constants";
 
 //Display general information for home page
 export const index = asyncHandler(
@@ -27,7 +28,7 @@ export const index = asyncHandler(
 export const getBooks = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const books = await BookService.getBooks();
-    res.render("books/index", { books });
+    res.render("books/index", { books, messages: req.flash() });
   }
 );
 
@@ -48,7 +49,22 @@ export const createBook = asyncHandler(
 // Display detail page for a specific book.
 export const getBookDetails = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    res.send(`NOT IMPLEMENTED: Book detail: ${req.params.id}`);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      req.flash("error", req.t('book.invalid'));
+      return res.redirect("/books");
+    }
+    const book = await BookService.getBookDetails(id);
+    if (book === null) {
+      req.flash("error", req.t('book.not_found'));
+      return res.redirect("/books");
+    }
+    res.render("books/details", {
+      book,
+      book_instances: book?.book_instances,
+      book_genres: book?.genres,
+      book_instance_status: BookInstanceStatus,
+    });
   }
 );
 

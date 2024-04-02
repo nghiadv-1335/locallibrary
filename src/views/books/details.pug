@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('book.title')}: #{book.title}
+    p #[strong #{t('sidebar.author')}: ]
+      a(href=book.author.url()) #{book.author.name()}
+    p #[strong #{t('book.summary')}: ] #{book.summary}
+    p #[strong #{t('book.isbn')}: ] #{book.isbn}
+    p #[strong #{t('sidebar.genre')}: ]
+      if book_genres.length
+        each val, index in book_genres
+          a(href=val.url()) #{val.name}
+          if index < book_genres.length - 1
+            |,
+      else
+        p #{t('book.no_genres')}
+    div
+      h4 #{t('book.copies')}
+      if book_instances.length
+      each val in book_instances
+        hr
+        if val.status == book_instance_status.AVAILABLE
+          p.text-success #{t('bookinstance.available')}
+        else if val.status == book_instance_status.LOST
+          p.text-danger #{t('bookinstance.lost')}
+        else
+          p.text-warning #{t('bookinstance.loaned')}
+        p #[strong #{t('bookinstance.imprint')}:] #{val.imprint}
+        if val.status!=book_instance_status.AVAILABLE
+          p #[strong #{t('bookinstance.due_back')}:] #{val.due_back}
+        p #[strong #{t('bookinstance.id')}: ]
+          a(href=val.url()) #{val.id}
+      else
+        p #{t('book.no_copies')}

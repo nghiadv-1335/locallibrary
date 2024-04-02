@@ -30,3 +30,10 @@ export async function getBooks(): Promise<Book[]> {
     relations: ["author"],
   });
 }
+
+export async function getBookDetails(id: number): Promise<Book | null> {
+  return await bookRepository.findOne({
+    relations: ["author", "genres", "book_instances"],
+    where: { id: id },
+  });
+}

@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('sidebar.genre')}: #{genre.name}
+    div.child-content
+      h3.child-title #{t('sidebar.book')}
+      if genre.books.length
+        each book in genre.books
+          a(href=book.url()) #{book.title}
+          p #{book.summary}
+      else
+        p #{t('genre.no_books')}

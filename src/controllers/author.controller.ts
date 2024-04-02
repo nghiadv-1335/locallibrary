@@ -6,7 +6,7 @@ import asyncHandler from "express-async-handler";
 export const getAuthors = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const authors = await AuthorService.getAuthors();
-    res.render("authors/index", { authors });
+    res.render("authors/index", { authors, messages: req.flash() });
   }
 );
 
@@ -27,7 +27,17 @@ export const createAuthor = asyncHandler(
 // Display detail page for a specific author.
 export const getAuthorDetails = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    res.send(`NOT IMPLEMENTED: Author detail: ${req.params.id}`);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      req.flash("error", req.t('author.invalid'));
+      return res.redirect("/authors");
+    }
+    const author = await AuthorService.getAuthorDetails(id);
+    if (author === null) {
+      req.flash("error", req.t('author.not_found'));
+      return res.redirect("/authors");
+    }
+    res.render("authors/details", { author });
   }
 );
 

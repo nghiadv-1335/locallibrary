@@ -8,3 +8,10 @@ export async function getAuthors(): Promise<Author[]> {
     order: { first_name: "ASC" },
   });
 }
+
+export async function getAuthorDetails(id: number): Promise<Author | null> {
+  return await authorRepository.findOne({
+    relations: ["books"],
+    where: { id: id },
+  });
+}

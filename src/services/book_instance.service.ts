@@ -8,3 +8,10 @@ export async function getBookInstances(): Promise<BookInstance[]> {
     relations: ["book"],
   });
 }
+
+export async function getBookInstanceDetails(id: number): Promise<BookInstance | null> {
+  return await bookInstanceRepository.findOne({
+    relations: ["book"],
+    where: { id: id },
+  });
+}
