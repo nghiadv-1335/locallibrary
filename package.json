@@ -5,7 +5,10 @@
     "lint": "npx eslint --ext .ts src/",
     "start": "nodemon ts-node src/index.ts",
     "dev:start": "nodemon dist/index.js",
-    "server:start": "DEBUG=locallibrary:* npm run dev:start"
+    "server:start": "DEBUG=locallibrary:* npm run dev:start",
+    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -d ./src/config/typeorm.ts",
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/config/typeorm.ts",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./src/config/typeorm.ts"
   },
   "nodemonConfig": {
     "watch": [
@@ -37,7 +40,9 @@
     "module-alias": "^2.2.3",
     "moment": "^2.30.1",
     "morgan": "^1.10.0",
+    "mysql2": "^3.9.3",
     "pug": "^3.0.2",
+    "reflect-metadata": "^0.2.2",
     "ts-command-line-args": "^2.5.1",
     "typeorm": "^0.3.20"
   },
