@@ -1,0 +1,25 @@
+{
+  "home": {
+    "welcome": "Welcome to Sun Asterisk",
+    "content": "Contents",
+    "record_infor": "Our library information",
+    "book": "Books",
+    "bookinstance": "Book instances",
+    "available_bookinstance": "Available book instances",
+    "author": "Authors",
+    "genre": "Genres"
+  },
+  "sidebar": {
+    "name": "Local library",
+    "book": "Books",
+    "author": "Authors",
+    "genre": "Genres",
+    "bookinstance": "Book instances",
+    "author_create": "Create author",
+    "genre_create": "Create genre",
+    "book_create": "Create book",
+    "bookinstance_create": "Create book instance",
+    "english": "English",
+    "vietnamese": "Vietnamese"
+  }
+}

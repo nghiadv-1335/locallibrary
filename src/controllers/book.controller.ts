@@ -1,5 +1,45 @@
 import { Request, Response, NextFunction } from "express";
+import { AppDataSource } from "../config/typeorm";
+import { Author } from "../entities/author.entity";
+import { Book } from "../entities/book.entity";
+import { BookInstance } from "../entities/book_instance.entity";
+import { Genre } from "../entities/genre.entity";
+import { BookInstanceStatus } from "../common/constants";
 import asyncHandler from "express-async-handler";
+
+const bookRepository = AppDataSource.getRepository(Book);
+const authorRepository = AppDataSource.getRepository(Author);
+const genreRepository = AppDataSource.getRepository(Genre);
+const bookInstanceRepository = AppDataSource.getRepository(BookInstance);
+
+//Display general information for home page
+export const index = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const [
+      numBooks,
+      numBookInstances,
+      availableBookInstances,
+      numAuthors,
+      numGenres,
+    ] = await Promise.all([
+      bookRepository.count(),
+      bookInstanceRepository.count(),
+      bookInstanceRepository.findAndCount({
+        where: { status: BookInstanceStatus.AVAILABLE },
+      }),
+      authorRepository.count(),
+      genreRepository.count(),
+    ]);
+    res.render("index", {
+      title: "Sun Asterisk",
+      book_count: numBooks,
+      book_instance_count: numBookInstances,
+      book_instance_available_count: availableBookInstances[1], // count available bookInstance
+      author_count: numAuthors,
+      genre_count: numGenres,
+    });
+  }
+);
 
 // Display list of all books.
 export const getBooks = asyncHandler(

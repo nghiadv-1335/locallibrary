@@ -1,0 +1,25 @@
+{
+  "home": {
+    "welcome": "Chào mừng bạn đến với Sun Asterisk",
+    "content": "Nội dung",
+    "record_infor": "Tình trạng thư viện của chúng tôi",
+    "book": "Sách",
+    "bookinstance": "Bản sao",
+    "available_bookinstance": "Tất cả các bản sao có sẵn",
+    "author": "Tác giả",
+    "genre": "Thể loại"
+  },
+  "sidebar": {
+    "name": "Thư viện địa phương",
+    "book": "Sách",
+    "author": "Tác giả",
+    "genre": "Thể loại",
+    "bookinstance": "Bản sao sách",
+    "author_create": "Tạo mới tác giả",
+    "genre_create": "Tạo mới thể loại",
+    "book_create": "Tạo mới sách",
+    "bookinstance_create": "Tạo mới bản sao sách",
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt"
+  }
+}

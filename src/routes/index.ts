@@ -3,11 +3,10 @@ import { Router, Request, Response, NextFunction } from "express";
 import bookInstanceRoute from "./book_instance.route";
 import bookRoute from "./book.route";
 import genreRoute from "./genre.route";
+import { index } from "../controllers/book.controller";
 const router: Router = Router();
 
-router.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.render("index", { title: "Express" });
-});
+router.get("/", index);
 router.use("/authors", authorRoute);
 router.use("/books", bookRoute);
 router.use("/book-instances", bookInstanceRoute);

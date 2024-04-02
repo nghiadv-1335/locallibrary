@@ -1,18 +1,36 @@
 doctype html
-html
+html(lang='en')
   head
-    title= pageTitle
-    link(rel='stylesheet', href='../public/stylesheet/layout.css')
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport' , content='width=device-width, initial-scale=1')
+    link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    script(src="/scripts/bootstrap.min.js")
   body
-    header
-      h1 Local Library App
-    nav
-      ul
-        li
-          a(href='/') Home
-        li
-          a(href='/about') About
-    main
+    div(class='container-fluid')
+      block sidebar
+        ul(class='sidebar-nav' )
+          li
+            a(href='/' ) #{t('sidebar.name')}
+          li
+            a(href='/books' ) #{t('sidebar.book')}
+          li
+            a(href='/authors' ) #{t('sidebar.author')}
+          li
+            a(href='/authors' ) #{t('sidebar.genre')}
+          li
+            a(href='/authors' ) #{t('sidebar.bookinstance')}
+          hr
+          li
+            a(href='/authors/create' ) #{t('sidebar.author_create')}
+          li
+            a(href='/genres/create' ) #{t('sidebar.genre_create')}
+          li
+            a(href='/books/create' ) #{t('sidebar.book_create')}
+          li
+            a(href='/book-instances/create' ) #{t('sidebar.bookinstance_create')}
+          li
+            a(href='?locale=en') #{t('sidebar.english')} |
+            a(href='?locale=vi') #{t('sidebar.vietnamese')}
       block content
-    footer
-      p Copyright © #{new Date().getFullYear()} Local Library App

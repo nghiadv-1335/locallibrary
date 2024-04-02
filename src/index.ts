@@ -3,9 +3,34 @@ import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import router from "./routes/index";
 import logger from "morgan";
+import i18next from 'i18next';
+import i18nextBackend from 'i18next-fs-backend';
+import i18nextMiddleware from 'i18next-http-middleware';
 import { AppDataSource } from "./config/typeorm";
 
 const port = process.env.PORT || 3000;
+
+i18next
+  .use(i18nextBackend)
+  .use(i18nextMiddleware.LanguageDetector)
+  .init({
+    fallbackLng: 'vi',
+    preload: ['vi', 'en'],
+    supportedLngs: ['vi', 'en'],
+    saveMissing: true,
+    backend: {
+      loadPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.json'),
+      addPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.missing.json'),
+    },
+    detection: {
+      order: ['querystring', 'cookie'],
+      caches: ['cookie'],
+      lookupQuerystring: 'locale', //query string on url (?locale=en/vi)
+      lookupCookie: 'locale',
+      ignoreCase: true,
+      cookieSecure: false,
+    }
+  });
 
 const app = express();
 
@@ -18,6 +43,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+
+app.use(i18nextMiddleware.handle(i18next));
 
 app.use(logger("dev"));
 
