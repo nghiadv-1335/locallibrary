@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('sidebar.book')}: #{book.title}
+    if book_instances.length
+      p #[strong #{t('book.delete_constraint')}: ]
+      div.child-title
+        h4 #{t('sidebar.bookinstance')}
+      dl
+        each book_instance in book_instances
+          dt
+            a(href=book_instance.url()) #{t('bookinstance.id')}: #{book_instance.id}
+          dd 
+            span #[strong #{t('bookinstance.imprint')}:] #{book_instance.imprint}
+          dd
+            span #[strong #{t('bookinstance.status')}:] 
+            if book_instance.status === book_instance_status.AVAILABLE
+              span.text-success #{t('bookinstance.available')}
+            else if book_instance.status === book_instance_status.ONLOAN
+              span.text-warning #{t('bookinstance.loaned')}
+            else if book_instance.status === book_instance_status.LOST
+              span.text-danger #{t('bookinstance.lost')}
+            else
+              span #{book_instance.status}
+          if book_instance.status != book_instance_status.AVAILABLE
+            dd
+              span #[strong #{t('bookinstance.due_back')}:] #{book_instance.due_back}
+    else
+      p #{t('book.delete_warning')}
+      form(method='POST')
+        div.form-group
+          input.form-control(type='hidden', name='bookid', value=book.id )
+        button.btn.btn-primary(type='submit') #{t('form.delete')}

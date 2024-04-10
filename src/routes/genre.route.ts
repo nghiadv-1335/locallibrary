@@ -7,8 +7,12 @@ router.get("/", genreController.getGenres);
 router.get("/create", genreController.getCreateGenre);
 router.post("/create", genreController.createGenre);
 
+router.get("/:id/delete", genreController.getDeleteGenre);
+router.post("/:id/delete", genreController.deleteGenre);
+
+router.get("/:id/update", genreController.getUpdateGenre);
+router.post("/:id/update", genreController.updateGenre);
+
 router.get("/:id", genreController.getGenreDetails);
-router.put("/:id", genreController.updateGenre);
-router.delete("/:id", genreController.deleteGenre);
 
 export default router;

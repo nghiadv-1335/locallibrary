@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('sidebar.genre')}: #{genre.name}
+    p #{t('genre.delete_warning')}
+    form(method='POST')
+      div.form-group
+        input.form-control(type='hidden', name='genreid', value=genre.id )
+      button.btn.btn-primary(type='submit') #{t('form.delete')}

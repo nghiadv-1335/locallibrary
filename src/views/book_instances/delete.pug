@@ -15,8 +15,8 @@ block content
         span.text-warning #{t('bookinstance.loaned')}
     if book_instance.status != book_instance_status.AVAILABLE
       p #[strong #{t('bookinstance.due_back')}:] #{book_instance.due_back}
-    hr
-    p
-      a(href=book_instance.url()+'/delete') #{t('bookinstance.delete')}
-    p
-      a(href=book_instance.url()+'/update') #{t('bookinstance.update')}
+    p #{t('bookinstance.delete_warning')}
+    form(method='POST')
+      div.form-group
+        input.form-control(type='hidden', name='book_instance_id', value=book_instance.id )
+      button.btn.btn-primary(type='submit') #{t('form.delete')}

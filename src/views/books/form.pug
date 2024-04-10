@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{title}
+    form(method='POST')
+      div.form-group
+        label(for='title') #[strong #{t('book.title')}: ]
+        input#title.form-control.w-auto(type='text' placeholder=t('book.title_placeholder')
+          name='title' required value=(undefined === book ? '' : book.title))
+      div.form-group
+        label #[strong #{t('sidebar.author')}: ]
+        select(name='author').form-select.w-auto
+          if book === undefined
+            each author in authors
+              option(value=author.id) #{author.name()}
+          else
+            each author in authors
+              if book.author == author.id
+                option(value=author.id selected) #{author.name()}
+              else
+                option(value=author.id) #{author.name()}
+      div.form-group
+        label(for='summary') #[strong #{t('book.summary')}: ]
+        input#name.form-control.w-auto(type='text' placeholder=t('book.summary')
+          name='summary' required value=(undefined === book ? '' : book.summary))
+      div.form-group
+        label(for='isbn') #[strong #{t('book.isbn')}: ]
+        input#name.form-control.w-auto(type='text' placeholder=t('book.isbn')
+          name='isbn' required value=(undefined === book ? '' : book.isbn))
+      div.form-group
+        label(for='genre') #[strong #{t('sidebar.genre')}: ]
+        if book === undefined
+          each genre in genres
+            div.form-check
+              input.form-check-input(type="checkbox" name='genres' value=genre.id id=genre.id)
+              label.form-check-label(for=genre.id) #{genre.name}
+        else
+          each genre in genres
+            if book.genres.includes(genre.id)
+              div.form-check
+                input.form-check-input(type="checkbox" name='genres' checked value=genre.id id=genre.id)
+                label.form-check-label(for=genre.id) #{genre.name}
+            else
+              div.form-check
+                input.form-check-input(type="checkbox" name='genres' value=genre.id id=genre.id)
+                label.form-check-label(for=genre.id) #{genre.name}
+      button.btn.btn-primary(type='submit') #{t('form.submit')}
+    if errors
+      ul.error-list
+        for error in errors
+          li.text-danger #{error.msg}

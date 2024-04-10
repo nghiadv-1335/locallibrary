@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{title}
+    form(method='POST')
+      div.form-group
+        label(for='name') #{t('sidebar.genre')}:
+        input#name.form-control(type='text' placeholder=t('genre.name_ph')
+          name='name' required value=(undefined === genre ? '' : genre.name))
+      button.btn.btn-primary(type='submit') #{t('form.submit')}
+    if errors
+      ul.error-list
+        for error in errors
+          li.text-danger #{error.msg}

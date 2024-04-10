@@ -42,7 +42,14 @@
     "copies": "Bản sao",
     "no_copies": "Cuốn sách này hiện chưa có bản sao nào",
     "invalid": "Mã sách không hợp lệ",
-    "not_found": "Không tìm thấy sách"
+    "not_found": "Không tìm thấy sách",
+    "update": "Cập nhật thông tin sách",
+    "title_placeholder": "Tên cuốn sách",
+    "no_genres": "Cuốn sách này không có thể loại",
+    "create": "Thêm sách mới",
+    "delete": "Xóa sách",
+    "delete_warning": "Bạn có chắc muốn xóa cuốn sách này?",
+    "delete_constraint": "Vui lòng xóa những bản sao sau trước khi xóa sách"
   },
   "bookinstance": {
     "lost": "Thất lạc",
@@ -53,16 +60,45 @@
     "due_back": "Hạn cuối",
     "status": "Trạng thái",
     "invalid": "Mã bản sao không hợp lệ",
-    "not_found": "Không tìm thấy bản sao"
+    "not_found": "Không tìm thấy bản sao",
+    "create": "Thêm bản sao sách mới",
+    "delete": "Xóa bản sao sách",
+    "delete_warning": "Bạn có chắc muốn xóa bản sao sách này?",
+    "update": "Cập nhật thông tin bản sao sách",
+    "imprint_ph": "Ấn bản sách"
   },
   "author": {
     "no_books": "Tác giả chưa có cuốn sách nào",
     "invalid": "Mã tác giả không hợp lệ",
-    "not_found": "Không tìm thấy tác giả"
+    "not_found": "Không tìm thấy tác giả",
+    "delete_constraint": "Vui lòng xóa những cuốn sách sau trước khi xóa tác giả",
+    "delete_warning": "Bạn có chắc muốn xóa tác giả?",
+    "delete": "Xóa tác giả",
+    "create": "Thêm mới tác giả",
+    "f_name": "Tên",
+    "fml_name": "Họ",
+    "dob": "Ngày sinh",
+    "dod": "Ngày mất",
+    "update": "Cập nhật thông tin tác giả",
+    "invalid_dob": "Ngày sinh không hợp lệ",
+    "invalid_dod": "Ngày mất không hợp lệ",
+    "f_name_ph": "Nghĩa",
+    "fml_name_ph": "Võ"
   },
   "genre": {
     "no_books": "Không có sách thể loại này",
     "invalid": "Mã thể loại không hợp lệ",
-    "not_found": "Không tìm thấy thể loại"
+    "not_found": "Không tìm thấy thể loại",
+    "create": "Thêm thể loại mới",
+    "existing": "Thể loại đã tồn tại",
+    "min_length": "Tên thể loại phải tối thiểu 3 ký tự",
+    "name_ph": "Phiêu lưu, Giả tưởng,v.v",
+    "delete": "Xóa thể loại",
+    "update": "Cập nhật thông tin thể loại",
+    "delete_warning": "Bạn có chắc muốn xóa thể loại"
+  },
+  "form": {
+    "submit": "Gửi",
+    "delete": "Xóa"
   }
 }

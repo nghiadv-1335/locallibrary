@@ -3,11 +3,11 @@ import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import router from "./routes/index";
 import logger from "morgan";
-import session from 'express-session';
-import flash from 'connect-flash';
-import i18next from 'i18next';
-import i18nextBackend from 'i18next-fs-backend';
-import i18nextMiddleware from 'i18next-http-middleware';
+import session from "express-session";
+import flash from "connect-flash";
+import i18next from "i18next";
+import i18nextBackend from "i18next-fs-backend";
+import i18nextMiddleware from "i18next-http-middleware";
 import { AppDataSource } from "./config/typeorm";
 
 const port = process.env.PORT || 3000;
@@ -16,22 +16,22 @@ i18next
   .use(i18nextBackend)
   .use(i18nextMiddleware.LanguageDetector)
   .init({
-    fallbackLng: 'vi',
-    preload: ['vi', 'en'],
-    supportedLngs: ['vi', 'en'],
+    fallbackLng: "vi",
+    preload: ["vi", "en"],
+    supportedLngs: ["vi", "en"],
     saveMissing: true,
     backend: {
-      loadPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.json'),
-      addPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.missing.json'),
+      loadPath: path.join(__dirname, "locales/{{lng}}/{{ns}}.json"),
+      addPath: path.join(__dirname, "locales/{{lng}}/{{ns}}.missing.json"),
     },
     detection: {
-      order: ['querystring', 'cookie'],
-      caches: ['cookie'],
-      lookupQuerystring: 'locale', //query string on url (?locale=en/vi)
-      lookupCookie: 'locale',
+      order: ["querystring", "cookie"],
+      caches: ["cookie"],
+      lookupQuerystring: "locale", //query string on url (?locale=en/vi)
+      lookupCookie: "locale",
       ignoreCase: true,
       cookieSecure: false,
-    }
+    },
   });
 
 const app = express();
@@ -45,7 +45,7 @@ app.use(
   session({
     resave: false,
     saveUninitialized: false,
-    secret: 'locallibrary',
+    secret: "locallibrary",
     cookie: { maxAge: 60000 },
   })
 );

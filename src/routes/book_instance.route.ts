@@ -7,8 +7,12 @@ router.get("/", bookInstanceController.getBookInstances);
 router.get("/create", bookInstanceController.getCreateBookInstance);
 router.post("/create", bookInstanceController.createBookInstance);
 
+router.get("/:id/delete", bookInstanceController.getDeleteBookInstance);
+router.post("/:id/delete", bookInstanceController.deleteBookInstance);
+
+router.get("/:id/update", bookInstanceController.getUpdateBookInstance);
+router.post("/:id/update", bookInstanceController.updateBookInstance);
+
 router.get("/:id", bookInstanceController.getBookInstanceDetails);
-router.put("/:id", bookInstanceController.updateBookInstance);
-router.delete("/:id", bookInstanceController.deleteBookInstance);
 
 export default router;

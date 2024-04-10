@@ -33,3 +33,8 @@ block content
           a(href=val.url()) #{val.id}
       else
         p #{t('book.no_copies')}
+    hr
+    p
+      a(href=book.url()+'/delete') #{t('book.delete')}
+    p
+      a(href=book.url()+'/update') #{t('book.update')}

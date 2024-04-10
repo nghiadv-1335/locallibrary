@@ -15,3 +15,11 @@ export async function getBookInstanceDetails(id: number): Promise<BookInstance |
     where: { id: id },
   });
 }
+
+export async function saveBookInstance(bookInstance: BookInstance): Promise<BookInstance> {
+  return await bookInstanceRepository.save(bookInstance);
+}
+
+export async function deleteBookInstance(id: number) {
+  await bookInstanceRepository.delete(id);
+}

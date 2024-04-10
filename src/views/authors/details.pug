@@ -3,7 +3,11 @@ extends ../layout
 block content
   div.content
     h1 #{t('sidebar.author')}: #{author.name()}
-    span #{new Date(author.day_of_birth)} - #{new Date(author.day_of_death)}
+    if author.day_of_birth !== null
+      span #{new Date(author.day_of_birth)}
+    span  - 
+    if author.day_of_death !== null
+      span #{new Date(author.day_of_death)}
     div.child-content
       h3.child-title #{t('sidebar.book')}
       if author.books.length
@@ -12,3 +16,8 @@ block content
           p #{book.summary}
       else
         p #{t('author.no_books')}
+    hr
+    p
+      a(href=author.url()+'/delete') #{t('author.delete')}
+    p
+      a(href=author.url()+'/update') #{t('author.update')}

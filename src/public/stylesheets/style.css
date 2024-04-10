@@ -26,9 +26,17 @@ ul li {
 }
 
 .child-title {
-  margin: 20px 0 20px 0
+  margin: 20px 0 20px 0;
 }
 
 a {
   text-decoration: none;
+}
+
+.form-group {
+  margin: 15px 0 15px 0;
+}
+
+.error-list {
+  margin-top: 15px;
 }

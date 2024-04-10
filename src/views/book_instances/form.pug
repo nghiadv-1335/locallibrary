@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{title}
+    form(method='POST')
+      div.form-group
+        label #[strong #{t('sidebar.book')}: ]
+        select(name='book').form-select.w-auto
+          if book_instance === undefined
+            each book in books
+              option(value=book.id) #{book.title}
+          else
+            each book in books
+              if book_instance.book.id == book.id
+                option(value=book.id selected) #{book.title}
+              else
+                option(value=book.id) #{book.title}
+      div.form-group
+        label(for='imprint') #[strong #{t('bookinstance.imprint')}: ]
+        input.form-control.w-auto(type='text' placeholder=t('bookinstance.imprint_ph')
+          name='imprint' required value=(undefined === book_instance ? '' : book_instance.imprint))
+      div.form-group
+        label(for='due_back') #[strong #{t('bookinstance.due_back')}: ]
+        input.form-control.w-auto(type='date'
+          name='due_back' value=(undefined === book_instance ? null : book_instance.due_back))
+      div.form-group
+        label #[strong #{t('bookinstance.status')}: ]
+        select(name='status').form-select.w-auto
+          if book_instance === undefined
+            each status in book_instance_status
+              option(value=status) #{status}
+          else
+            each status in book_instance_status
+              if book_instance.status == status
+                option(value=status selected) #{status}
+              else
+                option(value=status) #{status}
+      button.btn.btn-primary(type='submit') #{t('form.submit')}
+    if errors
+      ul.error-list
+        for error in errors
+          li.text-danger #{error.msg}

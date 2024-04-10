@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{t('sidebar.author')}: #{author.name()}
+    if author.day_of_birth !== null
+      span #{new Date(author.day_of_birth)}
+    span  - 
+    if author.day_of_death !== null
+      span #{new Date(author.day_of_death)}
+    if books.length
+      p #[strong #{t('author.delete_constraint')}: ]
+      div.child-title
+        h4 #{t('sidebar.book')}
+      dl
+        each book in books
+          dt
+            a(href=book.url()) #{book.title}
+          dd #{book.summary}
+    else
+      p #{t('author.delete_warning')}
+      form(method='POST', action='delete')
+        div.form-group
+          input#authorid.form-control(type='hidden', name='authorid', value=author._id )
+        button.btn.btn-primary(type='submit') #{t('form.delete')}

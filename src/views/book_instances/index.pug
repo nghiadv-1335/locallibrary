@@ -18,7 +18,7 @@ block content
             else
               span #{book_instance.status}
             if book_instance.status != book_instance_status.AVAILABLE
-              span  (Due: #{new Date(book_instance.due_back)} )
+              span  (#{t('bookinstance.due_back')}: #{new Date(book_instance.due_back)} )
     else
       span #{t('empty.bookinstances')}
     if messages.error

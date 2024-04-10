@@ -42,7 +42,14 @@
     "copies": "Copies",
     "no_copies": "There are no copies of this book in the library",
     "invalid": "Invalid book ID",
-    "not_found": "Book not found"
+    "not_found": "Book not found",
+    "update": "Update book",
+    "title_placeholder": "Name of book",
+    "no_genres": "This book has no genres",
+    "create": "Create a new book",
+    "delete": "Delete book",
+    "delete_warning": "Do you really want to delete this book?",
+    "delete_constraint": "Delete the following book instances before attempting to delete this book"
   },
   "bookinstance": {
     "lost": "Lost",
@@ -53,16 +60,45 @@
     "due_back": "Due back",
     "status": "Status",
     "invalid": "Invalid book instance ID",
-    "not_found": "Book instance not found"
+    "not_found": "Book instance not found",
+    "create": "Create a new book instance",
+    "delete": "Delete book instance",
+    "update": "Update book instance",
+    "delete_warning": "Do you really want to delete this book instance?",
+    "imprint_ph": "Picador, Knopf, Bold Type Books, or Little Brown"
   },
   "author": {
     "no_books": "This author has no books",
     "invalid": "Invalid author ID",
-    "not_found": "Author not found"
+    "not_found": "Author not found",
+    "delete_constraint": "Delete the following books before attempting to delete this author",
+    "delete_warning": "Do you really want to delete this author?",
+    "delete": "Delete author",
+    "create": "Create a new author",
+    "update": "Update author",
+    "f_name": "First name",
+    "fml_name": "Family name",
+    "dob": "Date of birth",
+    "dod": "Date of death",
+    "invalid_dob": "Invalid date of birth",
+    "invalid_dod": "Invalid date of deadth",
+    "f_name_ph": "Christian",
+    "fml_name_ph": "Smith"
   },
   "genre": {
     "no_books": "This genre has no books",
     "invalid": "Invalid genre ID",
-    "not_found": "Genre not found"
+    "not_found": "Genre not found",
+    "create": "Create a new genre",
+    "existing": "Genre with the same name has already existed",
+    "min_length": "Genre name must be at least 3 characters",
+    "name_ph": "Adventure, Fantasy, etc",
+    "delete": "Delete genre",
+    "update": "Update genre",
+    "delete_warning": "Do you really want to delete this genre?"
+  },
+  "form": {
+    "submit": "Submit",
+    "delete": "Delete"
   }
 }

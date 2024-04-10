@@ -37,3 +37,18 @@ export async function getBookDetails(id: number): Promise<Book | null> {
     where: { id: id },
   });
 }
+
+export async function getBookSimple(
+  id: number
+): Promise<Book | null> {
+  return await 
+    bookRepository.findOne({ where: { id: id }, loadRelationIds: {relations: ['genres', 'author']}, relations: ['book_instances']});
+}
+
+export async function deleteBook(id: number) {
+  await bookRepository.delete(id);
+}
+
+export async function saveBook(book: Book): Promise<Book> {
+  return await bookRepository.save(book);
+}

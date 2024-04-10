@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  div.content
+    h1 #{title}
+    form(method='POST')
+      div.form-group
+        label(for='f_name') #[strong #{t('author.f_name')}: ]
+        input#title.form-control.w-auto(type='text' placeholder=t('author.f_name_ph')
+          name='f_name' required value=(undefined === author ? '' : author.first_name))
+      div.form-group
+        label(for='fml_name') #[strong #{t('author.fml_name')}: ]
+        input#title.form-control.w-auto(type='text' placeholder=t('author.fml_name_ph')
+          name='fml_name' required value=(undefined === author ? '' : author.family_name))
+      div.form-group
+        label(for='dob') #[strong #{t('author.dob')}: ]
+        input#title.form-control.w-auto(type='date'
+          name='dob' value=(undefined === author ? null : author.day_of_birth))
+      div.form-group
+        label(for='dod') #[strong #{t('author.dod')}: ]
+        input#title.form-control.w-auto(type='date'
+          name='dod' value=(undefined === author ? null : author.day_of_death))
+      button.btn.btn-primary(type='submit') #{t('form.submit')}
+    if errors
+      ul.error-list
+        for error in errors
+          li.text-danger #{error.msg}

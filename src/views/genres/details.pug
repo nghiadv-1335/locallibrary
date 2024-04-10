@@ -11,3 +11,8 @@ block content
           p #{book.summary}
       else
         p #{t('genre.no_books')}
+    hr
+    p
+      a(href=genre.url()+'/delete') #{t('genre.delete')}
+    p
+      a(href=genre.url()+'/update') #{t('genre.update')}

@@ -7,8 +7,12 @@ block content
       ul
         each author in authors
           li
-            a(href=author.url()) #{author.name()}
-            |  (#{new Date(author.day_of_birth)} - #{new Date(author.day_of_death)})
+            a(href=author.url()) #{author.name()} 
+            if author.day_of_birth !== null
+              span #{new Date(author.day_of_birth)}
+            span  - 
+            if author.day_of_death !== null
+              span #{new Date(author.day_of_death)}
     else
       span #{t('empty.authors')}
     if messages.error
